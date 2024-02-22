@@ -1,6 +1,6 @@
 import tkinter as tk
 
-from utils import MenuWindowMixin, GameParamsType, WindowMixin
+from utils import MenuWindowMixin, GameParamsType, WindowMixin, GameModeEnum
 
 
 class WorkMenu(tk.Menu, WindowMixin):
@@ -93,52 +93,53 @@ class ProgramSettingsWindow(MenuWindowMixin):
         self.__init_window_body()
         self.__init_level_radiobuttons()
         self.__init_button()
-        self.__result_settings: GameParamsType = GameParamsType(
-            height=16,
-            width=30,
-            mines_count=90,
-            need_animation=False,
-            need_sound=False,
-            need_help=False,
-            need_continue_saved_game=False,
-            need_saved_game=False,
-            need_question_marks=False,
-            i_am_woodpecker=False,
-        )
 
     def start(self):
         super().start()
         self.__init_window()
 
     def __init_window(self):
-        self.__frame_for_border.pack(pady=15)
+        self.__frame_for_border.pack(pady=25)
         self.__frame_level.pack(pady=1, padx=1, fill=tk.BOTH)
-        self.__newbie_radiobutton.pack(anchor='w')
-        self.__amateur_radiobutton.pack(anchor='w')
-        self.__professional_radiobutton.pack(anchor='w')
-        self.__special_radiobutton.pack(anchor='w')
+
+        self.__newbie_radiobutton.place(relx=0.03, rely=0.16, anchor='w')
+        self.__amateur_radiobutton.place(relx=0.03, rely=0.48, anchor='w')
+        self.__professional_radiobutton.place(relx=0.03, rely=0.8, anchor='w')
+        self.__special_radiobutton.place(relx=0.53, rely=0.16, anchor='w')
         self.button_ok.pack(side="bottom", pady=10)
 
     def __init_window_body(self):
         self.__frame_for_border = tk.Frame(self, bg='gray')  # width=471, height=351
-        self.__frame_level = tk.Frame(self.__frame_for_border)  # width=470, height=350
+        self.__frame_level = tk.Frame(self.__frame_for_border,  width=470, height=250)  # width=470, height=350
 
     def __init_level_radiobuttons(self):
         # создаем переменную для хранения результата выбора
         self.__result_level = tk.IntVar()
-        self.__result_level.set(2)
-        # чекбокс "Новичок"
-        self.__newbie_radiobutton = tk.Radiobutton(self.__frame_level, text='Новичок\n10мин\nполе 9х9 ячеек', variable=self.__result_level, value=0)
-        # self.__newbie_radiobutton_label = tk.Frame(self, bg='gray', width=471, height=351)
-        # чекбокс "Любитель"
-        self.__amateur_radiobutton = tk.Radiobutton(self.__frame_level, text='Любитель\n40мин\nполе 16х16 ячеек', variable=self.__result_level, value=1)
-        # self.__amateur_radiobutton_label = tk.Frame(self, bg='gray', width=471, height=351)
-        # чекбокс "Профессионал"
-        self.__professional_radiobutton = tk.Radiobutton(self.__frame_level, text='Профессионал\n99мин\nполе 16х30 ячеек', variable=self.__result_level, value=2)
-        # self.__professional_radiobutton_label = tk.Frame(self, bg='gray', width=471, height=351)
-        # чекбокс "Особый" - назначение параметров вручную
-        self.__special_radiobutton = tk.Radiobutton(self.__frame_level, text='Особый', variable=self.__result_level, value=3)
-        # self.__special_radiobutton_label = tk.Frame(self, bg='gray', width=471, height=351)
+        self.__result_level.set(GameModeEnum.get_this_type(params=self.game_settings))
+        self.__newbie_radiobutton = tk.Radiobutton(  # чекбокс "Новичок"
+            self.__frame_level,
+            text='Новичок\n10мин\nполе 9х9 ячеек',
+            variable=self.__result_level, value=0,
+            activebackground='#DDDDDD',
+        )
+        self.__amateur_radiobutton = tk.Radiobutton(  # чекбокс "Любитель"
+            self.__frame_level,
+            text='Любитель\n40мин\nполе 16х16 ячеек',
+            variable=self.__result_level, value=1,
+            activebackground='#DDDDDD',
+        )
+        self.__professional_radiobutton = tk.Radiobutton(  # чекбокс "Профессионал"
+            self.__frame_level,
+            text='Профессионал\n99мин\nполе 16х30 ячеек',
+            variable=self.__result_level, value=2,
+            activebackground='#DDDDDD',
+        )
+        self.__special_radiobutton = tk.Radiobutton(  # чекбокс "Особый" - назначение параметров вручную
+            self.__frame_level,
+            text='Особый',
+            variable=self.__result_level, value=3,
+            activebackground='#DDDDDD',
+        )
 
         # # чекбокс "Особый" - назначение параметра высота
         # self.__special_radiobutton_height_field = tk.Frame(self, bg='gray', width=471, height=351)

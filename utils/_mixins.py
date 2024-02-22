@@ -4,24 +4,22 @@ from ._types import GameParamsType
 
 
 class WindowMixin:
-
-    def __init__(self):
-        self._width = 400
-        self._height = 300
-        self._program_version: str = ''
-        self._game_settings: GameParamsType = GameParamsType(
-            height=16,
-            width=30,
-            mines_count=90,
-            need_animation=False,
-            need_sound=False,
-            need_help=False,
-            need_continue_saved_game=False,
-            need_saved_game=False,
-            need_question_marks=False,
-            i_am_woodpecker=False,
-        )
-        self._title: str = 'Сапер'
+    _program_version: str = ''
+    _width = 400
+    _height = 300
+    _game_settings: GameParamsType = GameParamsType(
+        height=16,
+        width=30,
+        mines_count=99,
+        need_animation=False,
+        need_sound=False,
+        need_help=False,
+        need_continue_saved_game=False,
+        need_saved_game=False,
+        need_question_marks=False,
+        i_am_woodpecker=False,
+    )
+    _title: str = 'Сапер'
 
     def start(self) -> None:
         raise NotImplementedError

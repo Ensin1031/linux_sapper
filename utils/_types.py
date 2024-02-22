@@ -56,14 +56,14 @@ class GameModeEnum(IntEnum):
         if (params.height == NEWBIE_HEIGHT and
                 params.width == NEWBIE_WIDTH and
                 params.mines_count == NEWBIE_MINE_COUNT):
-            return cls.NEWBIE
+            return cls.NEWBIE.value
         if (params.height == AMATEUR_HEIGHT and
                 params.width == AMATEUR_WIDTH and
                 params.mines_count == AMATEUR_MINE_COUNT):
-            return cls.AMATEUR
+            return cls.AMATEUR.value
         if (params.height == PROFESSIONAL_HEIGHT and
                 params.width == PROFESSIONAL_WIDTH and
                 params.mines_count == PROFESSIONAL_MINE_COUNT):
-            return cls.PROFESSIONAL
+            return cls.PROFESSIONAL.value
 
-        return cls.SPECIAL
+        return cls.SPECIAL.value
