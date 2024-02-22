@@ -162,6 +162,7 @@ class AboutProgramWindow(MenuWindowMixin):
 
     def __init__(self, parent: tk.Menu):
         super().__init__(parent)
+        self._program_version: str = ''
         self.__init_window_body()
         self.__init_button()
 
