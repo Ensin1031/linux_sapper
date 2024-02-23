@@ -18,6 +18,10 @@ PROFESSIONAL_MINE_COUNT = 99
 
 ACTIVE_BACKGROUND_COLOR = '#CCCCCC'
 
+LABEL_BUTTON_PREFIX = '!labelbutton'
+
+BTN_SIZE = 28
+
 
 class GameParamsType(NamedTuple):
     height: int

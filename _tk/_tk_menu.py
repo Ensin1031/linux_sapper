@@ -19,7 +19,7 @@ class WorkMenu(tk.Menu, WindowMixin):
         self.__init_menu()
 
     def __menu_options(self):
-        print('настройки')
+        print('настройки')  # TODO убрать
 
     def __init_menu(self):
         """ Инициализируем меню сайбара """
