@@ -18,11 +18,7 @@ class View(WindowMixin):
         self.game_settings = self.set_game_settings(params=self.__db_connector.params)
 
         self.__menu_frame = WorkMenu(root=self.root, main_window=self)
-        self.__menu_frame.game_settings = self.game_settings
-        self.__menu_frame.program_version = self.program_version
         self.__game_frame = MainGameFrame(root=self.root, main_window=self)
-        self.__game_frame.game_settings = self.game_settings
-        self.__game_frame.program_version = self.program_version
 
     def destroy(self):
         self.root.destroy()
@@ -31,7 +27,11 @@ class View(WindowMixin):
         """ Запуск основного окна программы """
         self.__main_window_config()
 
+        self.__game_frame.program_version = self.program_version
+        self.__game_frame.game_settings = self.game_settings
         self.__game_frame.start()
+        self.__menu_frame.program_version = self.program_version
+        self.__menu_frame.game_settings = self.game_settings
         self.__menu_frame.start()
 
         self.root.mainloop()

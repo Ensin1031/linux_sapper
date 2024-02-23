@@ -91,11 +91,11 @@ class ProgramSettingsWindow(MenuWindowMixin):
     def __init__(self, parent: tk.Menu):
         super().__init__(parent)
         self.__init_window_body()
-        self.__init_level_radiobuttons()
         self.__init_button()
 
     def start(self):
         super().start()
+        self.__init_level_radiobuttons()
         self.__init_window()
 
     def __init_window(self):
@@ -119,25 +119,25 @@ class ProgramSettingsWindow(MenuWindowMixin):
         self.__newbie_radiobutton = tk.Radiobutton(  # чекбокс "Новичок"
             self.__frame_level,
             text='Новичок\n10мин\nполе 9х9 ячеек',
-            variable=self.__result_level, value=0,
+            variable=self.__result_level, value=GameModeEnum.NEWBIE.value,
             activebackground='#DDDDDD',
         )
         self.__amateur_radiobutton = tk.Radiobutton(  # чекбокс "Любитель"
             self.__frame_level,
             text='Любитель\n40мин\nполе 16х16 ячеек',
-            variable=self.__result_level, value=1,
+            variable=self.__result_level, value=GameModeEnum.AMATEUR.value,
             activebackground='#DDDDDD',
         )
         self.__professional_radiobutton = tk.Radiobutton(  # чекбокс "Профессионал"
             self.__frame_level,
             text='Профессионал\n99мин\nполе 16х30 ячеек',
-            variable=self.__result_level, value=2,
+            variable=self.__result_level, value=GameModeEnum.PROFESSIONAL.value,
             activebackground='#DDDDDD',
         )
         self.__special_radiobutton = tk.Radiobutton(  # чекбокс "Особый" - назначение параметров вручную
             self.__frame_level,
             text='Особый',
-            variable=self.__result_level, value=3,
+            variable=self.__result_level, value=GameModeEnum.SPECIAL.value,
             activebackground='#DDDDDD',
         )
 
@@ -163,12 +163,11 @@ class AboutProgramWindow(MenuWindowMixin):
 
     def __init__(self, parent: tk.Menu):
         super().__init__(parent)
-        self._program_version: str = ''
-        self.__init_window_body()
         self.__init_button()
 
     def start(self):
         super().start()
+        self.__init_window_body()
         self.__init_window()
 
     def __init_window(self):
