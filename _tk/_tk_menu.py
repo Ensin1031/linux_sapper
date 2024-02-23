@@ -115,30 +115,34 @@ class ProgramSettingsWindow(MenuWindowMixin):
     def __init_level_radiobuttons(self):
         # создаем переменную для хранения результата выбора
         self.__result_level = tk.IntVar()
-        self.__result_level.set(GameModeEnum.get_this_type(params=self.game_settings))
+        self.__result_level.set(value=GameModeEnum.get_this_type(params=self.game_settings))
+        common_set = {
+            'master': self.__frame_level,
+            'variable': self.__result_level,
+            'activebackground': '#CCCCCC',
+            'width': 18,
+            'height': 3,
+            'anchor': 'w',
+        }
         self.__newbie_radiobutton = tk.Radiobutton(  # чекбокс "Новичок"
-            self.__frame_level,
-            text='Новичок\n10мин\nполе 9х9 ячеек',
-            variable=self.__result_level, value=GameModeEnum.NEWBIE.value,
-            activebackground='#DDDDDD',
+            text='Новичок\n10 мин\nполе 9х9 ячеек',
+            value=GameModeEnum.NEWBIE.value,
+            **common_set,
         )
         self.__amateur_radiobutton = tk.Radiobutton(  # чекбокс "Любитель"
-            self.__frame_level,
-            text='Любитель\n40мин\nполе 16х16 ячеек',
-            variable=self.__result_level, value=GameModeEnum.AMATEUR.value,
-            activebackground='#DDDDDD',
+            text='Любитель\n40 мин\nполе 16х16 ячеек',
+            value=GameModeEnum.AMATEUR.value,
+            **common_set,
         )
         self.__professional_radiobutton = tk.Radiobutton(  # чекбокс "Профессионал"
-            self.__frame_level,
-            text='Профессионал\n99мин\nполе 16х30 ячеек',
-            variable=self.__result_level, value=GameModeEnum.PROFESSIONAL.value,
-            activebackground='#DDDDDD',
+            text='Профессионал\n99 мин\nполе 16х30 ячеек',
+            value=GameModeEnum.PROFESSIONAL.value,
+            **common_set,
         )
         self.__special_radiobutton = tk.Radiobutton(  # чекбокс "Особый" - назначение параметров вручную
-            self.__frame_level,
             text='Особый',
-            variable=self.__result_level, value=GameModeEnum.SPECIAL.value,
-            activebackground='#DDDDDD',
+            value=GameModeEnum.SPECIAL.value,
+            **common_set,
         )
 
         # # чекбокс "Особый" - назначение параметра высота
