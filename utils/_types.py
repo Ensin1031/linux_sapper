@@ -16,6 +16,8 @@ PROFESSIONAL_HEIGHT = 16
 PROFESSIONAL_WIDTH = 30
 PROFESSIONAL_MINE_COUNT = 99
 
+ACTIVE_BACKGROUND_COLOR = '#CCCCCC'
+
 
 class GameParamsType(NamedTuple):
     height: int
@@ -67,3 +69,33 @@ class GameModeEnum(IntEnum):
             return cls.PROFESSIONAL.value
 
         return cls.SPECIAL.value
+
+    @classmethod
+    def get_default_height(cls, mode_value: int, default_value: int) -> int:
+        if mode_value == GameModeEnum.NEWBIE.value:
+            return NEWBIE_HEIGHT
+        if mode_value == GameModeEnum.AMATEUR.value:
+            return AMATEUR_HEIGHT
+        if mode_value == GameModeEnum.PROFESSIONAL.value:
+            return PROFESSIONAL_HEIGHT
+        return default_value
+
+    @classmethod
+    def get_default_width(cls, mode_value: int, default_value: int) -> int:
+        if mode_value == GameModeEnum.NEWBIE.value:
+            return NEWBIE_WIDTH
+        if mode_value == GameModeEnum.AMATEUR.value:
+            return AMATEUR_WIDTH
+        if mode_value == GameModeEnum.PROFESSIONAL.value:
+            return PROFESSIONAL_WIDTH
+        return default_value
+
+    @classmethod
+    def get_default_mines_count(cls, mode_value: int, default_value: int) -> int:
+        if mode_value == GameModeEnum.NEWBIE.value:
+            return NEWBIE_MINE_COUNT
+        if mode_value == GameModeEnum.AMATEUR.value:
+            return AMATEUR_MINE_COUNT
+        if mode_value == GameModeEnum.PROFESSIONAL.value:
+            return PROFESSIONAL_MINE_COUNT
+        return default_value

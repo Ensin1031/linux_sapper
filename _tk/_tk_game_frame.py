@@ -5,7 +5,7 @@ from utils import WindowMixin, GameParamsType
 
 class MainGameFrame(tk.Frame, WindowMixin):
 
-    def __init__(self, root: tk.Tk, main_window: 'View'):
+    def __init__(self, root: tk.Tk, main_window: 'View'):  # noqa
         super().__init__()
         self.__root = root
         self.__main_window = main_window

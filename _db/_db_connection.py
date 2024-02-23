@@ -113,13 +113,13 @@ class Connection:
             height=params[0],
             width=params[1],
             mines_count=params[2],
-            need_animation=params[3],
-            need_sound=params[4],
-            need_help=params[5],
-            need_continue_saved_game=params[6],
-            need_saved_game=params[7],
-            need_question_marks=params[8],
-            i_am_woodpecker=params[9],
+            need_animation=bool(params[3]),
+            need_sound=bool(params[4]),
+            need_help=bool(params[5]),
+            need_continue_saved_game=bool(params[6]),
+            need_saved_game=bool(params[7]),
+            need_question_marks=bool(params[8]),
+            i_am_woodpecker=bool(params[9]),
         )
 
     def update_params(self, params: GameParamsType) -> GameParamsType:
