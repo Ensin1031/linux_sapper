@@ -40,10 +40,10 @@ class View(WindowMixin):
         """ Ребут основного окна игры. Если передают новые настройки - то с ними """
 
         if params is not None:
+            self.__db_connector.update_params(params=params)
             self.game_settings = self.set_game_settings(params=params)
             self.__game_frame.reboot_game(params=params)
 
-        print('reboot params ===', self.game_settings)
         self.__main_window_config()
 
         self.__menu_frame = WorkMenu(root=self.root, main_window=self)
