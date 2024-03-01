@@ -4,3 +4,4 @@ max-complexity=31
 format=pylint
 pylint-py3k-check = True
 exclude=
+    utils/_svg_images.py
